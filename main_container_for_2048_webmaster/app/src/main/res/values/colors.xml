@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_primary">#faf8ef</color>
+    <color name="background_grid">#bbada0</color>
+    <color name="tile_accent">#f59563</color>
 </resources>
