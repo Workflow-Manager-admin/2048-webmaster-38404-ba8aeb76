@@ -80,35 +80,35 @@ class Game2048View @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
-    override fun onDown(e: MotionEvent?): Boolean {
+    override fun onDown(e: MotionEvent): Boolean {
         return true
     }
 
-    override fun onShowPress(e: MotionEvent?) {
+    override fun onShowPress(e: MotionEvent) {
         // Not used for swipe detection
     }
 
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+    override fun onSingleTapUp(e: MotionEvent): Boolean {
         // For simple tap: restart when game over
         if (isGameOver) startNewGame()
         return true
     }
 
     override fun onScroll(
-        e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float
+        e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float
     ): Boolean {
         // Not used for swipe detection
         return false
     }
 
-    override fun onLongPress(e: MotionEvent?) {
+    override fun onLongPress(e: MotionEvent) {
         // Not used, required for interface
     }
 
     override fun onFling(
-        e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float
+        e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float
     ): Boolean {
-        if (isGameOver || e1 == null || e2 == null) return true
+        if (isGameOver) return true
         val dx = e2.x - e1.x
         val dy = e2.y - e1.y
         if (kotlin.math.abs(dx) > kotlin.math.abs(dy)) {
