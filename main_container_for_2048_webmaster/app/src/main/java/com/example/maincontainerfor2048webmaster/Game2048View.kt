@@ -92,14 +92,17 @@ class Game2048View @JvmOverloads constructor(
 
     override fun onScroll(
         e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float
-    ): Boolean = false
+    ): Boolean {
+        // Not used for swipe detection
+        return false
+    }
 
-    override fun onLongPress(e: MotionEvent) {}
+    override fun onLongPress(e: MotionEvent?) {}
 
     override fun onFling(
-        e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float
+        e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float
     ): Boolean {
-        if (isGameOver) return true
+        if (isGameOver || e1 == null || e2 == null) return true
         val dx = e2.x - e1.x
         val dy = e2.y - e1.y
         if (kotlin.math.abs(dx) > kotlin.math.abs(dy)) {
@@ -114,7 +117,8 @@ class Game2048View @JvmOverloads constructor(
     fun restartGame() = startNewGame()
 
     // --- Game movement/algorithm ---
-    private enum class Direction { UP, DOWN, LEFT, RIGHT }
+    // PUBLIC_INTERFACE
+    enum class Direction { UP, DOWN, LEFT, RIGHT }
 
     // PUBLIC_INTERFACE
     fun move(direction: Direction) {
