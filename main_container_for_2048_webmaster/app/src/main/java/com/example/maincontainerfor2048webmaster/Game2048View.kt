@@ -257,6 +257,12 @@ class Game2048View @JvmOverloads constructor(
         super.onDraw(canvas)
         val width = width - 2 * gridPadding
         val height = width
+
+        if (width <= 0 || height <= 0) {
+            // Avoid drawing or division by zero when layout is not measured or during IDE preview
+            return
+        }
+
         cellSize = (width - (gridSize+1)*cellMargin) / gridSize.toFloat()
 
         // Draw background
