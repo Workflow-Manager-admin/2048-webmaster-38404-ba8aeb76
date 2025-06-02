@@ -80,11 +80,15 @@ class Game2048View @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
-    override fun onDown(e: MotionEvent): Boolean = true
+    override fun onDown(e: MotionEvent?): Boolean {
+        return true
+    }
 
-    override fun onShowPress(e: MotionEvent) {}
+    override fun onShowPress(e: MotionEvent?) {
+        // Not used for swipe detection
+    }
 
-    override fun onSingleTapUp(e: MotionEvent): Boolean {
+    override fun onSingleTapUp(e: MotionEvent?): Boolean {
         // For simple tap: restart when game over
         if (isGameOver) startNewGame()
         return true
