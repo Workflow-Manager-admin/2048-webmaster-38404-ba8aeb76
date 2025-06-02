@@ -97,7 +97,9 @@ class Game2048View @JvmOverloads constructor(
         return false
     }
 
-    override fun onLongPress(e: MotionEvent?) {}
+    override fun onLongPress(e: MotionEvent?) {
+        // Not used, required for interface
+    }
 
     override fun onFling(
         e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float
